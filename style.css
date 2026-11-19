@@ -30,14 +30,14 @@ body {
 .book-cover {
     position: relative;
 
-    width: min(100%, 720px);
-    min-height: 780px;
+    width: min(100%, 600px);
+    min-height: 849px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 70px;
+    padding: 75px 65px;
 
     background:
         linear-gradient(
@@ -207,12 +207,10 @@ button:focus-visible {
 
 @media (max-width: 600px) {
 
-    body {
-        padding: 15px;
-    }
-
     .book-cover {
-        min-height: 650px;
+        width: 100%;
+        min-height: auto;
+        aspect-ratio: 1 / 1.414;
 
         padding: 50px 35px;
     }
