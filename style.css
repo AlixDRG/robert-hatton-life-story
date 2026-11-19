@@ -797,3 +797,295 @@ h2.original-heading {
         font-size: 11px;
     }
 }
+/* AUTOMATIC A5 PAGINATION */
+
+.reader {
+    width: min(100%, 600px);
+    margin: auto;
+}
+
+.page-stage {
+    perspective: 1800px;
+}
+
+.page {
+    position: relative;
+
+    width: 600px;
+    height: 849px;
+    min-height: 849px;
+    max-height: 849px;
+
+    padding: 64px 60px 70px;
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.paper-text {
+    width: 100%;
+    height: 700px;
+
+    overflow: hidden;
+}
+
+.paper-text p {
+    margin: 0 0 20px;
+
+    font-size: 18px;
+    line-height: 1.65;
+
+    color: #39342d;
+}
+
+.original-heading {
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: normal;
+
+    color: #28231c;
+}
+
+h2.original-heading {
+    font-size: 30px;
+}
+
+.family-list {
+    padding: 18px 0;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(128, 109, 80, 0.35);
+    border-bottom: 1px solid rgba(128, 109, 80, 0.35);
+}
+
+.original-caption {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* PRINTED PAGE NUMBER */
+
+.printed-page-number {
+    position: absolute;
+
+    right: 0;
+    bottom: 25px;
+    left: 0;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #756b5c;
+}
+
+
+/* CONTROLS OUTSIDE THE PAPER */
+
+.reader-navigation {
+    width: 100%;
+
+    margin-top: 25px;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.reader-navigation button {
+    margin: 0;
+
+    padding: 11px 17px;
+
+    background: rgba(245, 239, 227, 0.08);
+    border: 1px solid rgba(245, 239, 227, 0.55);
+
+    color: #f5efe3;
+}
+
+.reader-navigation button:hover:not(:disabled) {
+    background: #f5efe3;
+    color: #39342d;
+}
+
+.reader-navigation button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.reader-navigation span {
+    font-size: 14px;
+    color: #ded5c5;
+}
+
+
+/* INVISIBLE MEASUREMENT PAGE */
+
+.pagination-measurement {
+    position: fixed;
+    top: 0;
+    left: -10000px;
+
+    width: 480px;
+    height: 700px;
+
+    visibility: hidden;
+    pointer-events: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.pagination-measurement .paper-text {
+    width: 480px;
+    height: 700px;
+}
+
+
+/* IMPROVED PAGE TURN */
+
+.page-turn-forward-out {
+    transform-origin: left center;
+    animation: pageForwardOut 0.32s ease-in forwards;
+}
+
+.page-turn-forward-in {
+    transform-origin: right center;
+    animation: pageForwardIn 0.38s ease-out forwards;
+}
+
+.page-turn-back-out {
+    transform-origin: right center;
+    animation: pageBackOut 0.32s ease-in forwards;
+}
+
+.page-turn-back-in {
+    transform-origin: left center;
+    animation: pageBackIn 0.38s ease-out forwards;
+}
+
+@keyframes pageForwardOut {
+    from {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+
+    to {
+        opacity: 0;
+        transform: rotateY(-88deg);
+    }
+}
+
+@keyframes pageForwardIn {
+    from {
+        opacity: 0;
+        transform: rotateY(88deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes pageBackOut {
+    from {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+
+    to {
+        opacity: 0;
+        transform: rotateY(88deg);
+    }
+}
+
+@keyframes pageBackIn {
+    from {
+        opacity: 0;
+        transform: rotateY(-88deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .reader {
+        width: 100%;
+    }
+
+    .page {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+
+        aspect-ratio: 1 / 1.414;
+
+        padding:
+            clamp(34px, 8vw, 58px)
+            clamp(25px, 7vw, 45px)
+            clamp(44px, 9vw, 64px);
+    }
+
+    .paper-text {
+        height: calc(100% - 10px);
+    }
+
+    .paper-text p {
+        margin-bottom: 13px;
+
+        font-size: clamp(12px, 3.5vw, 17px);
+        line-height: 1.5;
+    }
+
+    .original-heading {
+        margin-bottom: 20px;
+
+        font-size: clamp(24px, 7vw, 34px);
+    }
+
+    .reader-navigation {
+        margin-top: 18px;
+        padding: 0;
+    }
+
+    .reader-navigation button {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .reader-navigation span {
+        font-size: 12px;
+    }
+
+    .pagination-measurement {
+        width: calc(100vw - clamp(50px, 14vw, 90px));
+
+        height: calc(
+            (100vw / 1.414) -
+            clamp(78px, 17vw, 122px)
+        );
+    }
+
+    .pagination-measurement .paper-text {
+        width: 100%;
+        height: 100%;
+    }
+}
