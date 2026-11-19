@@ -261,17 +261,17 @@ button:focus-visible {
 /* READER */
 
 .reader {
-    width: min(100%, 900px);
-
+    width: min(100%, 600px);
     margin: auto;
 }
 
 .page {
     position: relative;
 
-    min-height: 780px;
+    width: 100%;
+    min-height: 849px;
 
-    padding: 80px 90px;
+    padding: 75px 65px;
 
     background:
         linear-gradient(
@@ -283,7 +283,9 @@ button:focus-visible {
         ),
         #f5efe3;
 
-    border-radius: 3px;
+    border-radius: 2px 6px 6px 2px;
+
+border-left: 8px solid #ddd3c1;
 
     box-shadow:
         0 25px 70px rgba(0, 0, 0, 0.5);
@@ -340,8 +342,8 @@ button:focus-visible {
         0 auto
         24px;
 
-    font-size: 19px;
-    line-height: 1.85;
+    font-size: 20px;
+    line-height: 1.8;
 
     color: #39342d;
 }
