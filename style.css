@@ -1308,3 +1308,21 @@ h2.original-heading {
         transition-duration: 0.01ms !important;
     }
 }
+/* =========================================================
+   FINAL PAGINATION FIX
+   Keep text clear of the printed page number
+   ========================================================= */
+
+.page .paper-text {
+    height: 690px !important;
+    max-height: 690px !important;
+}
+
+.pagination-measurement {
+    height: 690px !important;
+}
+
+.pagination-measurement .paper-text {
+    height: 690px !important;
+    max-height: 690px !important;
+}
