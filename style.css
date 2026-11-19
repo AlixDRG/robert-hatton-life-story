@@ -1,0 +1,240 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at center, #555148 0%, #272521 65%, #171614 100%);
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: #29251f;
+}
+
+
+/* BOOK COVER */
+
+.book-cover {
+    position: relative;
+
+    width: min(100%, 720px);
+    min-height: 780px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(80, 55, 30, 0.15),
+            transparent 7%,
+            transparent 93%,
+            rgba(80, 55, 30, 0.15)
+        ),
+        #eee6d6;
+
+    border-radius: 3px 10px 10px 3px;
+
+    box-shadow:
+        -8px 8px 0 #b7aa91,
+        -13px 13px 0 #817560,
+        0 25px 60px rgba(0, 0, 0, 0.55);
+
+    overflow: hidden;
+}
+
+
+/* INNER BORDER */
+
+.book-cover::before {
+    content: "";
+
+    position: absolute;
+    inset: 22px;
+
+    border: 1px solid #a18d68;
+
+    pointer-events: none;
+}
+
+
+/* SECOND DECORATIVE BORDER */
+
+.book-cover::after {
+    content: "";
+
+    position: absolute;
+    inset: 29px;
+
+    border: 1px solid rgba(161, 141, 104, 0.4);
+
+    pointer-events: none;
+}
+
+
+/* COVER CONTENT */
+
+.cover-content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 560px;
+
+    text-align: center;
+}
+
+
+/* SMALL TITLE */
+
+.subtitle {
+    margin: 0 0 35px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    letter-spacing: 7px;
+
+    color: #806d50;
+}
+
+
+/* MAIN NAME */
+
+h1 {
+    margin: 0;
+
+    font-size: clamp(45px, 8vw, 76px);
+    line-height: 1.05;
+
+    font-weight: normal;
+
+    color: #28231c;
+}
+
+
+/* DECORATION */
+
+.ornament {
+    margin: 35px 0;
+
+    font-size: 18px;
+
+    color: #9b8056;
+}
+
+
+/* BIRTH DATE */
+
+.born {
+    margin: 0;
+
+    font-size: 18px;
+    font-style: italic;
+
+    color: #665c4d;
+}
+
+
+/* DESCRIPTION */
+
+.description {
+    margin: 40px auto 0;
+
+    max-width: 400px;
+
+    font-size: 19px;
+    line-height: 1.7;
+
+    color: #524b40;
+}
+
+
+/* BUTTON */
+
+button {
+    margin-top: 50px;
+
+    padding: 15px 30px;
+
+    background: transparent;
+
+    border: 1px solid #67583f;
+    border-radius: 2px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+
+    color: #3e372c;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+button:hover {
+    background: #3e372c;
+    color: #f4eee3;
+
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 3px solid #b89a69;
+    outline-offset: 4px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .book-cover {
+        min-height: 650px;
+
+        padding: 50px 35px;
+    }
+
+    .book-cover::before {
+        inset: 14px;
+    }
+
+    .book-cover::after {
+        inset: 19px;
+    }
+
+    h1 {
+        font-size: 44px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 5px;
+    }
+
+    .description {
+        font-size: 17px;
+    }
+}
