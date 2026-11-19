@@ -1,3 +1,10 @@
+/* =========================================================
+   ROBERT DAVID HATTON - MY STORY
+   ========================================================= */
+
+
+/* ---------- RESET ---------- */
+
 * {
     box-sizing: border-box;
 }
@@ -8,6 +15,9 @@ body {
     min-height: 100%;
 }
 
+
+/* ---------- SITE BACKGROUND ---------- */
+
 body {
     min-height: 100vh;
 
@@ -15,52 +25,68 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 30px;
+    padding: 35px;
 
     background:
-        radial-gradient(circle at center, #555148 0%, #272521 65%, #171614 100%);
+        radial-gradient(
+            circle at center,
+            #514e47 0%,
+            #312f2a 55%,
+            #24231f 100%
+        );
 
     font-family: Georgia, "Times New Roman", serif;
+
     color: #29251f;
 }
 
 
-/* BOOK COVER */
+/* =========================================================
+   BOOK COVER
+   ========================================================= */
 
 .book-cover {
     position: relative;
 
-    width: min(100%, 600px);
-    min-height: 849px;
+    width: 600px;
+    height: 849px;
+
+    max-width: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 75px 65px;
+    padding: 65px 60px;
 
     background:
         linear-gradient(
             90deg,
-            rgba(80, 55, 30, 0.15),
+            rgba(80, 55, 30, 0.14),
             transparent 7%,
             transparent 93%,
-            rgba(80, 55, 30, 0.15)
+            rgba(80, 55, 30, 0.10)
         ),
         #eee6d6;
 
-    border-radius: 3px 10px 10px 3px;
+    border-radius: 3px 8px 8px 3px;
 
     box-shadow:
-        -8px 8px 0 #b7aa91,
-        -13px 13px 0 #817560,
-        0 25px 60px rgba(0, 0, 0, 0.55);
+        -7px 7px 0 #b7aa91,
+        -11px 11px 0 #817560,
+        0 25px 65px rgba(0, 0, 0, 0.55);
 
     overflow: hidden;
+
+    transform-origin: left center;
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease;
 }
 
 
-/* INNER BORDER */
+/* Decorative cover borders */
 
 .book-cover::before {
     content: "";
@@ -72,9 +98,6 @@ body {
 
     pointer-events: none;
 }
-
-
-/* SECOND DECORATIVE BORDER */
 
 .book-cover::after {
     content: "";
@@ -88,19 +111,17 @@ body {
 }
 
 
-/* COVER CONTENT */
+/* ---------- COVER CONTENT ---------- */
 
 .cover-content {
     position: relative;
     z-index: 1;
 
-    max-width: 560px;
+    width: 100%;
+    max-width: 475px;
 
     text-align: center;
 }
-
-
-/* SMALL TITLE */
 
 .subtitle {
     margin: 0 0 35px;
@@ -113,22 +134,16 @@ body {
     color: #806d50;
 }
 
-
-/* MAIN NAME */
-
-h1 {
+.cover-content h1 {
     margin: 0;
 
-    font-size: clamp(45px, 8vw, 76px);
-    line-height: 1.05;
+    font-size: 62px;
+    line-height: 1.08;
 
     font-weight: normal;
 
     color: #28231c;
 }
-
-
-/* DECORATION */
 
 .ornament {
     margin: 35px 0;
@@ -137,9 +152,6 @@ h1 {
 
     color: #9b8056;
 }
-
-
-/* BIRTH DATE */
 
 .born {
     margin: 0;
@@ -150,13 +162,10 @@ h1 {
     color: #665c4d;
 }
 
-
-/* DESCRIPTION */
-
 .description {
-    margin: 40px auto 0;
-
     max-width: 400px;
+
+    margin: 40px auto 0;
 
     font-size: 19px;
     line-height: 1.7;
@@ -165,22 +174,10 @@ h1 {
 }
 
 
-/* BUTTON */
+/* ---------- BUTTONS ---------- */
 
 button {
-    margin-top: 50px;
-
-    padding: 15px 30px;
-
-    background: transparent;
-
-    border: 1px solid #67583f;
-    border-radius: 2px;
-
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
-
-    color: #3e372c;
 
     cursor: pointer;
 
@@ -190,7 +187,22 @@ button {
         transform 0.2s ease;
 }
 
-button:hover {
+.cover-content button {
+    margin-top: 50px;
+
+    padding: 14px 28px;
+
+    background: transparent;
+
+    border: 1px solid #67583f;
+    border-radius: 2px;
+
+    font-size: 16px;
+
+    color: #3e372c;
+}
+
+.cover-content button:hover {
     background: #3e372c;
     color: #f4eee3;
 
@@ -203,16 +215,492 @@ button:focus-visible {
 }
 
 
-/* MOBILE */
+/* ---------- COVER OPENING ---------- */
 
-@media (max-width: 600px) {
+.book-cover.opening {
+    transform:
+        perspective(1600px)
+        rotateY(-85deg);
+
+    opacity: 0;
+}
+
+
+/* =========================================================
+   READER
+   ========================================================= */
+
+.reader {
+    width: 600px;
+    max-width: 100%;
+
+    margin: auto;
+}
+
+.page-stage {
+    width: 100%;
+
+    perspective: 1800px;
+}
+
+
+/* =========================================================
+   A5 PAGE
+   ========================================================= */
+
+.page {
+    position: relative;
+
+    width: 600px;
+    height: 849px;
+
+    max-width: 100%;
+
+    padding:
+        55px
+        60px
+        42px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(76, 56, 31, 0.10) 0%,
+            rgba(76, 56, 31, 0.035) 5%,
+            transparent 12%,
+            transparent 91%,
+            rgba(76, 56, 31, 0.035) 100%
+        ),
+        #f5efe3;
+
+    border-left: 8px solid #ddd3c1;
+
+    border-radius:
+        2px
+        6px
+        6px
+        2px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5);
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   STORY AREA
+   ========================================================= */
+
+.paper-text {
+    width: 100%;
+
+    /*
+       849 page height
+       minus top/bottom padding
+       minus printed page number area
+    */
+
+    height: 735px;
+
+    overflow: hidden;
+}
+
+
+/* ---------- STORY PARAGRAPHS ---------- */
+
+.paper-text p {
+    margin:
+        0
+        0
+        17px;
+
+    font-size: 17px;
+    line-height: 1.55;
+
+    color: #39342d;
+}
+
+.paper-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   ORIGINAL DOCUMENT HEADINGS
+   Only used where a heading exists in Robert's document
+   ========================================================= */
+
+.original-heading {
+    margin:
+        0
+        0
+        27px;
+
+    text-align: center;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 32px;
+    line-height: 1.2;
+
+    font-weight: normal;
+
+    color: #28231c;
+}
+
+h2.original-heading {
+    font-size: 28px;
+}
+
+
+/* ---------- 3 GENERATIONS ---------- */
+
+.family-list {
+    padding: 15px 0;
+
+    text-align: center;
+
+    line-height: 1.55;
+
+    border-top:
+        1px solid rgba(128, 109, 80, 0.35);
+
+    border-bottom:
+        1px solid rgba(128, 109, 80, 0.35);
+}
+
+
+/* ---------- ORIGINAL PHOTO CAPTIONS ---------- */
+
+.original-caption {
+    margin-top: 25px !important;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.printed-page-number {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 18px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #82786a;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   OUTSIDE OF THE BOOK PAGE
+   ========================================================= */
+
+.reader-navigation {
+    width: 100%;
+
+    margin-top: 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reader-navigation button {
+    margin: 0;
+
+    padding: 10px 16px;
+
+    background:
+        rgba(245, 239, 227, 0.08);
+
+    border:
+        1px solid
+        rgba(245, 239, 227, 0.55);
+
+    border-radius: 2px;
+
+    font-size: 14px;
+
+    color: #f5efe3;
+}
+
+.reader-navigation button:hover:not(:disabled) {
+    background: #f5efe3;
+
+    color: #39342d;
+}
+
+.reader-navigation button:disabled {
+    opacity: 0.3;
+
+    cursor: default;
+}
+
+
+/*
+   This deliberately hides any old progress counter
+   such as "3 / 6" or "3 of 6".
+
+   The only page number should be the printed number
+   at the bottom of the paper.
+*/
+
+#page-progress,
+.reader-navigation span {
+    display: none;
+}
+
+
+/* =========================================================
+   AUTOMATIC PAGINATION MEASUREMENT
+
+   This exists off-screen and allows JavaScript to measure
+   exactly how much text fits on one physical page.
+   ========================================================= */
+
+.pagination-measurement {
+    position: fixed;
+
+    top: 0;
+    left: -10000px;
+
+    width: 480px;
+    height: 735px;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+.pagination-measurement .paper-text {
+    width: 480px;
+    height: 735px;
+}
+
+.pagination-measurement p {
+    margin:
+        0
+        0
+        17px;
+
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+.pagination-measurement .original-heading {
+    margin:
+        0
+        0
+        27px;
+
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.pagination-measurement h2.original-heading {
+    font-size: 28px;
+}
+
+.pagination-measurement .family-list {
+    padding: 15px 0;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   PAGE TURN
+   ========================================================= */
+
+.page-turn-forward-out {
+    transform-origin: left center;
+
+    animation:
+        pageForwardOut
+        0.32s
+        ease-in
+        forwards;
+}
+
+.page-turn-forward-in {
+    transform-origin: right center;
+
+    animation:
+        pageForwardIn
+        0.38s
+        ease-out
+        forwards;
+}
+
+.page-turn-back-out {
+    transform-origin: right center;
+
+    animation:
+        pageBackOut
+        0.32s
+        ease-in
+        forwards;
+}
+
+.page-turn-back-in {
+    transform-origin: left center;
+
+    animation:
+        pageBackIn
+        0.38s
+        ease-out
+        forwards;
+}
+
+
+/* ---------- FORWARD ---------- */
+
+@keyframes pageForwardOut {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            rotateY(0deg);
+    }
+
+    40% {
+        opacity: 0.85;
+
+        box-shadow:
+            -20px
+            20px
+            35px
+            rgba(0, 0, 0, 0.28);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            rotateY(-88deg);
+    }
+}
+
+@keyframes pageForwardIn {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotateY(88deg);
+    }
+
+    60% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            rotateY(0deg);
+    }
+}
+
+
+/* ---------- BACK ---------- */
+
+@keyframes pageBackOut {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            rotateY(0deg);
+    }
+
+    40% {
+        opacity: 0.85;
+
+        box-shadow:
+            20px
+            20px
+            35px
+            rgba(0, 0, 0, 0.28);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            rotateY(88deg);
+    }
+}
+
+@keyframes pageBackIn {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotateY(-88deg);
+    }
+
+    60% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            rotateY(0deg);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+
+    /* ---------- MOBILE COVER ---------- */
 
     .book-cover {
         width: 100%;
-        min-height: auto;
+        height: auto;
+
         aspect-ratio: 1 / 1.414;
 
-        padding: 50px 35px;
+        padding:
+            45px
+            35px;
+
+        box-shadow:
+            -4px 4px 0 #b7aa91,
+            -7px 7px 0 #817560,
+            0 18px 40px rgba(0, 0, 0, 0.5);
     }
 
     .book-cover::before {
@@ -223,869 +711,170 @@ button:focus-visible {
         inset: 19px;
     }
 
-    h1 {
-        font-size: 44px;
+    .cover-content h1 {
+        font-size:
+            clamp(
+                38px,
+                11vw,
+                58px
+            );
     }
 
     .subtitle {
-        font-size: 12px;
+        margin-bottom: 25px;
+
+        font-size: 11px;
+
         letter-spacing: 5px;
     }
 
+    .ornament {
+        margin: 25px 0;
+    }
+
+    .born {
+        font-size: 15px;
+    }
+
     .description {
-        font-size: 17px;
-    }
-}
-/* BOOK OPENING ANIMATION */
+        margin-top: 25px;
 
-.book-cover {
-    transform-origin: left center;
-
-    transition:
-        transform 0.7s ease,
-        opacity 0.7s ease;
-}
-
-.book-cover.opening {
-    transform:
-        perspective(1400px)
-        rotateY(-75deg)
-        translateX(-80px);
-
-    opacity: 0;
-}
-
-
-/* READER */
-
-.reader {
-    width: min(100%, 600px);
-    margin: auto;
-}
-
-.page {
-    position: relative;
-
-    width: 100%;
-    min-height: 849px;
-
-    padding: 75px 65px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(100, 80, 50, 0.06),
-            transparent 10%,
-            transparent 90%,
-            rgba(100, 80, 50, 0.04)
-        ),
-        #f5efe3;
-
-    border-radius: 2px 6px 6px 2px;
-
-border-left: 8px solid #ddd3c1;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.5);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    animation: pageAppear 0.6s ease;
-}
-
-
-/* PAGE HEADING */
-
-.chapter-label {
-    margin: 0 0 20px;
-
-    text-align: center;
-
-    font-size: 12px;
-    font-weight: bold;
-
-    letter-spacing: 5px;
-
-    color: #8c7959;
-}
-
-.page-title {
-    margin: 0;
-
-    text-align: center;
-
-    font-size: clamp(36px, 6vw, 58px);
-
-    font-weight: normal;
-
-    color: #28231c;
-}
-
-.page-divider {
-    width: 60px;
-    height: 1px;
-
-    margin: 35px auto 45px;
-
-    background: #a48c65;
-}
-
-
-/* STORY TEXT */
-
-.page > p:not(.chapter-label) {
-    max-width: 650px;
-
-    margin:
-        0 auto
-        24px;
-
-    font-size: 20px;
-    line-height: 1.8;
-
-    color: #39342d;
-}
-
-
-/* NAVIGATION */
-
-.navigation {
-    max-width: 650px;
-
-    margin:
-        60px auto
-        0;
-
-    padding-top: 25px;
-
-    border-top:
-        1px solid rgba(100, 80, 50, 0.25);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-.navigation button {
-    margin: 0;
-
-    padding: 10px 16px;
-
-    font-size: 14px;
-}
-
-.navigation span {
-    font-size: 14px;
-
-    color: #756b5c;
-}
-
-.navigation button:disabled {
-    opacity: 0.3;
-
-    cursor: default;
-}
-
-
-/* ANIMATIONS */
-
-@keyframes pageAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(15px)
-            scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* MOBILE READER */
-
-@media (max-width: 600px) {
-
-    .reader {
-        width: 100%;
-    }
-
-    .page {
-        min-height: 650px;
-
-        padding:
-            55px
-            30px
-            35px;
-    }
-
-    .page > p:not(.chapter-label) {
-        font-size: 17px;
-
-        line-height: 1.75;
-    }
-
-    .navigation {
-        margin-top: 40px;
-    }
-}
-/* STORY CONTENT */
-
-.story-text {
-    max-width: 470px;
-    margin: 0 auto;
-}
-
-.story-text p {
-    margin: 0 0 24px;
-
-    font-size: 19px;
-    line-height: 1.75;
-
-    color: #39342d;
-}
-
-.story-text p:first-child::first-letter {
-    float: left;
-
-    margin:
-        5px
-        8px
-        0
-        0;
-
-    font-size: 55px;
-    line-height: 0.8;
-
-    color: #806d50;
-}
-
-.story-text .place {
-    margin: 35px auto;
-
-    text-align: center;
-
-    font-style: italic;
-
-    line-height: 1.6;
-
-    color: #675c4c;
-}
-
-
-/* PAGE TURN */
-
-.page-turn {
-    animation: pageTurn 0.35s ease;
-}
-
-@keyframes pageTurn {
-
-    0% {
-        opacity: 0.4;
-
-        transform:
-            perspective(1200px)
-            rotateY(4deg)
-            translateX(8px);
-    }
-
-    100% {
-        opacity: 1;
-
-        transform:
-            perspective(1200px)
-            rotateY(0deg)
-            translateX(0);
-    }
-}
-
-
-/* MOBILE STORY */
-
-@media (max-width: 600px) {
-
-    .story-text p {
-        font-size: 17px;
-        line-height: 1.65;
-    }
-
-    .story-text p:first-child::first-letter {
-        font-size: 45px;
-    }
-}
-/* FIXED A5 BOOK PAGE */
-
-.reader {
-    width: min(100%, 600px);
-    margin: auto;
-
-    perspective: 1800px;
-}
-
-.page {
-    position: relative;
-
-    width: 600px;
-    height: 849px;
-    min-height: 849px;
-    max-height: 849px;
-
-    padding: 64px 60px 92px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(76, 56, 31, 0.1) 0%,
-            rgba(76, 56, 31, 0.035) 5%,
-            transparent 12%,
-            transparent 90%,
-            rgba(76, 56, 31, 0.035) 100%
-        ),
-        #f5efe3;
-
-    border-left: 8px solid #ddd3c1;
-    border-radius: 2px 6px 6px 2px;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.5);
-
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-
-/* FIXED TEXT AREA */
-
-.paper-text {
-    height: 665px;
-    overflow: hidden;
-}
-
-.paper-text p {
-    margin: 0 0 22px;
-
-    font-size: 18px;
-    line-height: 1.7;
-
-    color: #39342d;
-}
-
-.paper-text p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* ONLY GENUINE HEADINGS FROM THE DOCUMENT */
-
-.original-heading {
-    margin: 0 0 35px;
-
-    text-align: center;
-
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 34px;
-    line-height: 1.2;
-    font-weight: normal;
-
-    color: #28231c;
-}
-
-h2.original-heading {
-    font-size: 30px;
-}
-
-.family-list {
-    padding: 20px 0;
-
-    text-align: center;
-
-    border-top: 1px solid rgba(128, 109, 80, 0.35);
-    border-bottom: 1px solid rgba(128, 109, 80, 0.35);
-}
-
-.original-caption {
-    margin-top: 40px !important;
-
-    text-align: center;
-    font-weight: bold;
-}
-
-
-/* FIXED NAVIGATION POSITION */
-
-.navigation {
-    position: absolute;
-
-    right: 60px;
-    bottom: 35px;
-    left: 60px;
-
-    max-width: none;
-    margin: 0;
-    padding-top: 18px;
-
-    border-top: 1px solid rgba(100, 80, 50, 0.25);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-.navigation button {
-    margin: 0;
-    padding: 9px 13px;
-
-    font-size: 13px;
-}
-
-.navigation span {
-    font-size: 13px;
-    color: #756b5c;
-}
-
-
-/* DIRECTIONAL PAGE TURN */
-
-.turn-forward-out {
-    transform-origin: left center;
-
-    animation: turnForwardOut 0.36s ease-in forwards;
-}
-
-.turn-forward-in {
-    transform-origin: right center;
-
-    animation: turnForwardIn 0.42s ease-out forwards;
-}
-
-.turn-back-out {
-    transform-origin: right center;
-
-    animation: turnBackOut 0.36s ease-in forwards;
-}
-
-.turn-back-in {
-    transform-origin: left center;
-
-    animation: turnBackIn 0.42s ease-out forwards;
-}
-
-@keyframes turnForwardOut {
-    from {
-        opacity: 1;
-        transform: rotateY(0deg);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-    }
-
-    to {
-        opacity: 0;
-        transform: rotateY(-82deg);
-        box-shadow: -35px 25px 45px rgba(0, 0, 0, 0.28);
-    }
-}
-
-@keyframes turnForwardIn {
-    from {
-        opacity: 0;
-        transform: rotateY(82deg);
-        box-shadow: 35px 25px 45px rgba(0, 0, 0, 0.28);
-    }
-
-    to {
-        opacity: 1;
-        transform: rotateY(0deg);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-    }
-}
-
-@keyframes turnBackOut {
-    from {
-        opacity: 1;
-        transform: rotateY(0deg);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-    }
-
-    to {
-        opacity: 0;
-        transform: rotateY(82deg);
-        box-shadow: 35px 25px 45px rgba(0, 0, 0, 0.28);
-    }
-}
-
-@keyframes turnBackIn {
-    from {
-        opacity: 0;
-        transform: rotateY(-82deg);
-        box-shadow: -35px 25px 45px rgba(0, 0, 0, 0.28);
-    }
-
-    to {
-        opacity: 1;
-        transform: rotateY(0deg);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-    }
-}
-
-
-/* MOBILE A5 SCALING */
-
-@media (max-width: 650px) {
-    .reader {
-        width: 100%;
-    }
-
-    .page {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-        max-height: none;
-
-        aspect-ratio: 1 / 1.414;
-
-        padding:
-            clamp(35px, 8vw, 55px)
-            clamp(25px, 7vw, 45px)
-            78px;
-    }
-
-    .paper-text {
-        height: calc(100% - 20px);
-    }
-
-    .paper-text p {
-        margin-bottom: 16px;
-
-        font-size: clamp(13px, 3.7vw, 17px);
-        line-height: 1.55;
-    }
-
-    .original-heading {
-        margin-bottom: 24px;
-
-        font-size: clamp(25px, 7vw, 34px);
-    }
-
-    .navigation {
-        right: clamp(20px, 6vw, 40px);
-        bottom: 22px;
-        left: clamp(20px, 6vw, 40px);
-    }
-
-    .navigation button {
-        padding: 7px 9px;
-        font-size: 11px;
-    }
-
-    .navigation span {
-        font-size: 11px;
-    }
-}
-/* AUTOMATIC A5 PAGINATION */
-
-.reader {
-    width: min(100%, 600px);
-    margin: auto;
-}
-
-.page-stage {
-    perspective: 1800px;
-}
-
-.page {
-    position: relative;
-
-    width: 600px;
-    height: 849px;
-    min-height: 849px;
-    max-height: 849px;
-
-    padding: 64px 60px 70px;
-
-    overflow: hidden;
-
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-}
-
-.paper-text {
-    width: 100%;
-    height: 700px;
-
-    overflow: hidden;
-}
-
-.paper-text p {
-    margin: 0 0 20px;
-
-    font-size: 18px;
-    line-height: 1.65;
-
-    color: #39342d;
-}
-
-.original-heading {
-    margin: 0 0 30px;
-
-    text-align: center;
-
-    font-size: 34px;
-    line-height: 1.2;
-    font-weight: normal;
-
-    color: #28231c;
-}
-
-h2.original-heading {
-    font-size: 30px;
-}
-
-.family-list {
-    padding: 18px 0;
-
-    text-align: center;
-
-    border-top: 1px solid rgba(128, 109, 80, 0.35);
-    border-bottom: 1px solid rgba(128, 109, 80, 0.35);
-}
-
-.original-caption {
-    text-align: center;
-    font-weight: bold;
-}
-
-
-/* PRINTED PAGE NUMBER */
-
-.printed-page-number {
-    position: absolute;
-
-    right: 0;
-    bottom: 25px;
-    left: 0;
-
-    text-align: center;
-
-    font-size: 13px;
-
-    color: #756b5c;
-}
-
-
-/* CONTROLS OUTSIDE THE PAPER */
-
-.reader-navigation {
-    width: 100%;
-
-    margin-top: 25px;
-    padding: 0 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-.reader-navigation button {
-    margin: 0;
-
-    padding: 11px 17px;
-
-    background: rgba(245, 239, 227, 0.08);
-    border: 1px solid rgba(245, 239, 227, 0.55);
-
-    color: #f5efe3;
-}
-
-.reader-navigation button:hover:not(:disabled) {
-    background: #f5efe3;
-    color: #39342d;
-}
-
-.reader-navigation button:disabled {
-    opacity: 0.3;
-    cursor: default;
-}
-
-.reader-navigation span {
-    font-size: 14px;
-    color: #ded5c5;
-}
-
-
-/* INVISIBLE MEASUREMENT PAGE */
-
-.pagination-measurement {
-    position: fixed;
-    top: 0;
-    left: -10000px;
-
-    width: 480px;
-    height: 700px;
-
-    visibility: hidden;
-    pointer-events: none;
-
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-.pagination-measurement .paper-text {
-    width: 480px;
-    height: 700px;
-}
-
-
-/* IMPROVED PAGE TURN */
-
-.page-turn-forward-out {
-    transform-origin: left center;
-    animation: pageForwardOut 0.32s ease-in forwards;
-}
-
-.page-turn-forward-in {
-    transform-origin: right center;
-    animation: pageForwardIn 0.38s ease-out forwards;
-}
-
-.page-turn-back-out {
-    transform-origin: right center;
-    animation: pageBackOut 0.32s ease-in forwards;
-}
-
-.page-turn-back-in {
-    transform-origin: left center;
-    animation: pageBackIn 0.38s ease-out forwards;
-}
-
-@keyframes pageForwardOut {
-    from {
-        opacity: 1;
-        transform: rotateY(0deg);
-    }
-
-    to {
-        opacity: 0;
-        transform: rotateY(-88deg);
-    }
-}
-
-@keyframes pageForwardIn {
-    from {
-        opacity: 0;
-        transform: rotateY(88deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: rotateY(0deg);
-    }
-}
-
-@keyframes pageBackOut {
-    from {
-        opacity: 1;
-        transform: rotateY(0deg);
-    }
-
-    to {
-        opacity: 0;
-        transform: rotateY(88deg);
-    }
-}
-
-@keyframes pageBackIn {
-    from {
-        opacity: 0;
-        transform: rotateY(-88deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: rotateY(0deg);
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 650px) {
-    .reader {
-        width: 100%;
-    }
-
-    .page {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-        max-height: none;
-
-        aspect-ratio: 1 / 1.414;
-
-        padding:
-            clamp(34px, 8vw, 58px)
-            clamp(25px, 7vw, 45px)
-            clamp(44px, 9vw, 64px);
-    }
-
-    .paper-text {
-        height: calc(100% - 10px);
-    }
-
-    .paper-text p {
-        margin-bottom: 13px;
-
-        font-size: clamp(12px, 3.5vw, 17px);
+        font-size: 16px;
         line-height: 1.5;
     }
 
-    .original-heading {
-        margin-bottom: 20px;
+    .cover-content button {
+        margin-top: 30px;
 
-        font-size: clamp(24px, 7vw, 34px);
+        padding:
+            11px
+            20px;
+
+        font-size: 14px;
     }
 
+
+    /* ---------- MOBILE READER ---------- */
+
+    .reader {
+        width: 100%;
+    }
+
+    .page {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 1 / 1.414;
+
+        padding:
+            8%
+            8%
+            7%;
+    }
+
+    .paper-text {
+        height: calc(100% - 25px);
+    }
+
+    .paper-text p {
+        margin-bottom: 11px;
+
+        font-size:
+            clamp(
+                11px,
+                3.3vw,
+                16px
+            );
+
+        line-height: 1.45;
+    }
+
+    .original-heading {
+        margin-bottom: 18px;
+
+        font-size:
+            clamp(
+                22px,
+                7vw,
+                32px
+            );
+    }
+
+    h2.original-heading {
+        font-size:
+            clamp(
+                20px,
+                6vw,
+                28px
+            );
+    }
+
+    .family-list {
+        padding: 10px 0;
+    }
+
+    .printed-page-number {
+        bottom: 10px;
+
+        font-size: 11px;
+    }
+
+
+    /* ---------- MOBILE NAVIGATION ---------- */
+
     .reader-navigation {
-        margin-top: 18px;
-        padding: 0;
+        margin-top: 17px;
     }
 
     .reader-navigation button {
-        padding: 9px 11px;
+        padding:
+            8px
+            11px;
+
         font-size: 12px;
     }
 
-    .reader-navigation span {
-        font-size: 12px;
-    }
+
+    /* ---------- MOBILE PAGINATION MEASUREMENT ---------- */
 
     .pagination-measurement {
-        width: calc(100vw - clamp(50px, 14vw, 90px));
+        width:
+            calc(
+                84vw - 30px
+            );
 
-        height: calc(
-            (100vw / 1.414) -
-            clamp(78px, 17vw, 122px)
-        );
+        height:
+            calc(
+                (84vw * 1.414) - 70px
+            );
     }
 
     .pagination-measurement .paper-text {
         width: 100%;
         height: 100%;
+    }
+
+    .pagination-measurement p {
+        margin-bottom: 11px;
+
+        font-size:
+            clamp(
+                11px,
+                3.3vw,
+                16px
+            );
+
+        line-height: 1.45;
+    }
+
+    .pagination-measurement .original-heading {
+        margin-bottom: 18px;
+
+        font-size:
+            clamp(
+                22px,
+                7vw,
+                32px
+            );
     }
 }
