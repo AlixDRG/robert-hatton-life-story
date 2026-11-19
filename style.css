@@ -238,3 +238,204 @@ button:focus-visible {
         font-size: 17px;
     }
 }
+/* BOOK OPENING ANIMATION */
+
+.book-cover {
+    transform-origin: left center;
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease;
+}
+
+.book-cover.opening {
+    transform:
+        perspective(1400px)
+        rotateY(-75deg)
+        translateX(-80px);
+
+    opacity: 0;
+}
+
+
+/* READER */
+
+.reader {
+    width: min(100%, 900px);
+
+    margin: auto;
+}
+
+.page {
+    position: relative;
+
+    min-height: 780px;
+
+    padding: 80px 90px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100, 80, 50, 0.06),
+            transparent 10%,
+            transparent 90%,
+            rgba(100, 80, 50, 0.04)
+        ),
+        #f5efe3;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    animation: pageAppear 0.6s ease;
+}
+
+
+/* PAGE HEADING */
+
+.chapter-label {
+    margin: 0 0 20px;
+
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    color: #8c7959;
+}
+
+.page-title {
+    margin: 0;
+
+    text-align: center;
+
+    font-size: clamp(36px, 6vw, 58px);
+
+    font-weight: normal;
+
+    color: #28231c;
+}
+
+.page-divider {
+    width: 60px;
+    height: 1px;
+
+    margin: 35px auto 45px;
+
+    background: #a48c65;
+}
+
+
+/* STORY TEXT */
+
+.page > p:not(.chapter-label) {
+    max-width: 650px;
+
+    margin:
+        0 auto
+        24px;
+
+    font-size: 19px;
+    line-height: 1.85;
+
+    color: #39342d;
+}
+
+
+/* NAVIGATION */
+
+.navigation {
+    max-width: 650px;
+
+    margin:
+        60px auto
+        0;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(100, 80, 50, 0.25);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.navigation button {
+    margin: 0;
+
+    padding: 10px 16px;
+
+    font-size: 14px;
+}
+
+.navigation span {
+    font-size: 14px;
+
+    color: #756b5c;
+}
+
+.navigation button:disabled {
+    opacity: 0.3;
+
+    cursor: default;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* MOBILE READER */
+
+@media (max-width: 600px) {
+
+    .reader {
+        width: 100%;
+    }
+
+    .page {
+        min-height: 650px;
+
+        padding:
+            55px
+            30px
+            35px;
+    }
+
+    .page > p:not(.chapter-label) {
+        font-size: 17px;
+
+        line-height: 1.75;
+    }
+
+    .navigation {
+        margin-top: 40px;
+    }
+}
