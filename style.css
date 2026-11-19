@@ -289,6 +289,15 @@ button:focus-visible {
     backface-visibility: hidden;
 }
 
+border:
+    1px solid
+    rgba(128, 109, 80, 0.55);
+
+outline:
+    1px solid
+    rgba(128, 109, 80, 0.18);
+
+outline-offset: -12px;
 
 /* =========================================================
    STORY AREA
@@ -528,16 +537,29 @@ h2.original-heading {
 
 
 /* =========================================================
-   PAGE TURN
+   REALISTIC BOOK PAGE TURN
    ========================================================= */
+
+.page-stage {
+    position: relative;
+
+    width: 100%;
+
+    perspective: 2200px;
+
+    transform-style: preserve-3d;
+}
+
+
+/* ---------- FORWARD PAGE TURN ---------- */
 
 .page-turn-forward-out {
     transform-origin: left center;
 
     animation:
-        pageForwardOut
-        0.32s
-        ease-in
+        bookPageForwardOut
+        0.65s
+        cubic-bezier(0.55, 0.05, 0.35, 1)
         forwards;
 }
 
@@ -545,19 +567,22 @@ h2.original-heading {
     transform-origin: right center;
 
     animation:
-        pageForwardIn
-        0.38s
-        ease-out
+        bookPageForwardIn
+        0.65s
+        cubic-bezier(0.22, 0.61, 0.36, 1)
         forwards;
 }
+
+
+/* ---------- BACKWARDS PAGE TURN ---------- */
 
 .page-turn-back-out {
     transform-origin: right center;
 
     animation:
-        pageBackOut
-        0.32s
-        ease-in
+        bookPageBackOut
+        0.65s
+        cubic-bezier(0.55, 0.05, 0.35, 1)
         forwards;
 }
 
@@ -565,10 +590,225 @@ h2.original-heading {
     transform-origin: left center;
 
     animation:
-        pageBackIn
-        0.38s
-        ease-out
+        bookPageBackIn
+        0.65s
+        cubic-bezier(0.22, 0.61, 0.36, 1)
         forwards;
+}
+
+
+/* =========================================================
+   FORWARD
+   ========================================================= */
+
+@keyframes bookPageForwardOut {
+
+    0% {
+        transform:
+            rotateY(0deg)
+            translateX(0);
+
+        filter: brightness(1);
+
+        box-shadow:
+            0 25px 70px
+            rgba(0, 0, 0, 0.5);
+    }
+
+    25% {
+        transform:
+            rotateY(-25deg)
+            translateX(-4px);
+
+        filter: brightness(0.97);
+
+        box-shadow:
+            -12px 22px 35px
+            rgba(0, 0, 0, 0.35);
+    }
+
+    50% {
+        transform:
+            rotateY(-75deg)
+            translateX(-12px);
+
+        filter: brightness(0.88);
+
+        box-shadow:
+            -30px 20px 35px
+            rgba(0, 0, 0, 0.28);
+    }
+
+    75% {
+        transform:
+            rotateY(-135deg)
+            translateX(-8px);
+
+        filter: brightness(0.82);
+
+        box-shadow:
+            -15px 15px 25px
+            rgba(0, 0, 0, 0.18);
+    }
+
+    100% {
+        transform:
+            rotateY(-180deg)
+            translateX(0);
+
+        filter: brightness(0.94);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes bookPageForwardIn {
+
+    0% {
+        transform:
+            rotateY(180deg);
+
+        opacity: 0;
+
+        filter: brightness(0.9);
+    }
+
+    35% {
+        transform:
+            rotateY(110deg);
+
+        opacity: 0.25;
+
+        filter: brightness(0.85);
+    }
+
+    65% {
+        transform:
+            rotateY(45deg);
+
+        opacity: 0.75;
+
+        filter: brightness(0.93);
+
+        box-shadow:
+            22px 18px 34px
+            rgba(0, 0, 0, 0.25);
+    }
+
+    100% {
+        transform:
+            rotateY(0deg);
+
+        opacity: 1;
+
+        filter: brightness(1);
+
+        box-shadow:
+            0 25px 70px
+            rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+/* =========================================================
+   BACKWARDS
+   ========================================================= */
+
+@keyframes bookPageBackOut {
+
+    0% {
+        transform:
+            rotateY(0deg)
+            translateX(0);
+
+        filter: brightness(1);
+    }
+
+    25% {
+        transform:
+            rotateY(25deg)
+            translateX(4px);
+
+        filter: brightness(0.97);
+    }
+
+    50% {
+        transform:
+            rotateY(75deg)
+            translateX(12px);
+
+        filter: brightness(0.88);
+
+        box-shadow:
+            30px 20px 35px
+            rgba(0, 0, 0, 0.28);
+    }
+
+    75% {
+        transform:
+            rotateY(135deg)
+            translateX(8px);
+
+        filter: brightness(0.82);
+    }
+
+    100% {
+        transform:
+            rotateY(180deg);
+
+        filter: brightness(0.94);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes bookPageBackIn {
+
+    0% {
+        transform:
+            rotateY(-180deg);
+
+        opacity: 0;
+
+        filter: brightness(0.9);
+    }
+
+    35% {
+        transform:
+            rotateY(-110deg);
+
+        opacity: 0.25;
+
+        filter: brightness(0.85);
+    }
+
+    65% {
+        transform:
+            rotateY(-45deg);
+
+        opacity: 0.75;
+
+        filter: brightness(0.93);
+
+        box-shadow:
+            -22px 18px 34px
+            rgba(0, 0, 0, 0.25);
+    }
+
+    100% {
+        transform:
+            rotateY(0deg);
+
+        opacity: 1;
+
+        filter: brightness(1);
+
+        box-shadow:
+            0 25px 70px
+            rgba(0, 0, 0, 0.5);
+    }
 }
 
 
@@ -877,4 +1117,35 @@ h2.original-heading {
                 32px
             );
     }
+}
+/* =========================================================
+   PICTURES AND CAPTIONS
+   ========================================================= */
+
+.picture-placeholder {
+    min-height: 150px;
+
+    margin: 22px 0 10px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px dashed
+        rgba(128, 109, 80, 0.55);
+
+    background:
+        rgba(128, 109, 80, 0.035);
+
+    text-align: center;
+
+    font-style: italic;
+
+    color: #806d50;
+}
+
+.picture-placeholder + p {
+    text-align: center;
+    font-weight: bold;
 }
