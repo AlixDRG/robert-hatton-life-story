@@ -475,16 +475,6 @@ h2.original-heading {
    Text immediately after a picture is treated as its caption.
    ========================================================= */
 
-.picture-placeholder + p {
-    margin-top: 8px;
-
-    text-align: center;
-
-    font-weight: bold;
-
-    color: #39342d;
-}
-
 
 .original-caption {
     margin-top: 10px !important;
